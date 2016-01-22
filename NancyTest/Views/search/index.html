@@ -1,0 +1,41 @@
+﻿@Master['MainPage']
+
+@Section['Content']
+<div>&nbsp;</div>
+<div><b>Search location</b></div>
+<div>&nbsp;</div>
+
+<div>
+    <input id="autocomplete" title="type &quot;a&quot;">
+</div>
+
+<div>&nbsp;</div>
+<div id="selectedItem"></div>
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.4/jquery-ui.css" rel="stylesheet">
+<script src="https://code.jquery.com/jquery-1.12.0.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.4/jquery-ui.js"></script>
+
+<script type="text/javascript">
+    $("#autocomplete").autocomplete({
+        source: "http://localhost:52674/search/searchLocation",
+        minLength: 2,
+        select: function (event, ui) {
+            $("#selectedItem").text(ui.item.title + ' (' + ui.item.latitude + ', ' + ui.item.longitude + ')');
+        },
+        create: function() {
+            $(this).data('ui-autocomplete')._renderItem = function (ul, item) {
+                return $("<li></li>")
+                    .data("item.autocomplete", item)
+                    .append("<a>" + item.title + "</a>")
+                    .appendTo(ul);
+            };
+        }
+    });
+</script>
+
+@EndSection
+
+@Section['Other']
+
+@EndSection

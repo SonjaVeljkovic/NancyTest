@@ -1,0 +1,29 @@
+﻿@Master['MainPage']
+
+@Section['Content']
+<div>&nbsp;</div>
+<div><b>Add location</b></div>
+<div>&nbsp;</div>
+
+<form action="/addLocation" method="POST">
+    <div>Latitude: </div>
+    <div><input type="text" name="latitude" value="@Model.Latitude" /></div>
+
+    <div>Longitude: </div>
+    <div><input type="text" name="longitude" value="@Model.Longitude" /></div>
+
+    <div>Title: </div>
+    <div><input type="text" name="title" value="@Model.Title" /></div>
+
+    <div>Keywords: </div>
+    <div><input type="text" name="keywords" value="@Model.Keywords" /></div>
+
+    <div>&nbsp;</div>
+    <div><input type="submit" value="Add" /></div>
+</form>
+
+@EndSection
+
+@Section['Other']
+
+@EndSection
