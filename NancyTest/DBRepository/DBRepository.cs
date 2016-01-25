@@ -37,35 +37,16 @@ namespace NancyTest.DBRepository
         public void InsertLocation(Location location)
         {
             int id = _dbConnection.Query<int>(
-                @"insert into Location(Title, Latitude, Longitude)
+                @"insert into location(Title, Latitude, Longitude)
 				values (@Title, @Latitude, @Longitude);
                 select cast(LAST_INSERT_ID() as unsigned)",
                 param: location).Single();
 
             var rows = location.Keywords.Select(x => new { ID_location = id, Keyword = x });
             _dbConnection.Execute(
-                @"insert into LocationKeyword(ID_Location, Keyword)
+                @"insert into locationkeyword(ID_Location, Keyword)
             				values (@ID_location, @Keyword)",
                 param: rows);
-        }
-
-        /// <summary>
-        /// Gets locations which have criteria as a title or as a keyword.
-        /// </summary>
-        /// <param name="criteria">Specified criteria</param>
-        /// <returns>List of locations</returns>
-        public List<Location> GetLocationsBySearchCriteria(List<string> criteria)
-        {
-            criteria = criteria.Select(x => string.Format(@"""{0}""", x)).ToList();
-            IEnumerable<Location> queryResult = _dbConnection.Query<Location>(
-                string.Format(@"select distinct l.*
-                from Location l
-                join LocationKeyword lk on lk.ID_Location = l.ID
-                where l.Title in ({0})
-                or lk.Keyword in ({0})", String.Join(", ", criteria.ToArray())),
-                param: null);
-
-            return queryResult.ToList();
         }
 
         /// <summary>
@@ -77,8 +58,8 @@ namespace NancyTest.DBRepository
         {
             IEnumerable<Location> queryResult = _dbConnection.Query<Location>(
                 string.Format(@"select distinct l.*
-                from Location l
-                join LocationKeyword lk on lk.ID_Location = l.ID
+                from location l
+                join locationkeyword lk on lk.ID_Location = l.ID
                 where l.Title like '%{0}%'
                 or lk.Keyword like '%{0}%'", criteria),
                 param: null);
