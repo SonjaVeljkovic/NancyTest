@@ -19,7 +19,8 @@ namespace NancyTest.Modules
 
             Get["/searchLocation"] = parameters =>
             {
-                string criteria = Request.Query["term"].HasValue ? Request.Query["temp"].Value : "test";
+
+                string criteria = Request.Query["temp"].Value;
 
                 DBRepositoryProvider repoProvider = new DBRepositoryProvider(Utilities.GetConnectionStringFromConfiguration());
                 DBRepository.DBRepository dbRepo = repoProvider.GetRepository();

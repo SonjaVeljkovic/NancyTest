@@ -15,12 +15,6 @@ namespace NancyTest
         protected void Application_Start(object sender, EventArgs e)
         {
             RegisterRoutes(RouteTable.Routes);
-            //MvcApplication.RegisterRoutes()
-            //{
-
-            //    routes.IgnoreRoute("nancy/{*pathInfo}");
-
-            //}
         }
 
         void RegisterRoutes(RouteCollection routes)

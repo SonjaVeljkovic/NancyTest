@@ -8,7 +8,7 @@ namespace NancyTest.Modules
 {
     public class AddModule : Nancy.NancyModule
     {
-        public AddModule()
+        public AddModule() : base ("/")
         {
             Get["/"] = parameters =>
             {
