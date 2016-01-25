@@ -18,7 +18,7 @@
 
 <script type="text/javascript">
     $("#autocomplete").autocomplete({
-        source: "http://localhost:52674/search/searchLocation",
+        source: "/search/searchLocation",
         minLength: 2,
         select: function (event, ui) {
             $("#selectedItem").text(ui.item.title + ' (' + ui.item.latitude + ', ' + ui.item.longitude + ')');
