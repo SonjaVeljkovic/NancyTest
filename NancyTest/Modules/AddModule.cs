@@ -19,11 +19,9 @@ namespace NancyTest.Modules
 
             Post["/addLocation"] = parameters =>
             {
+                //TODO: validation
                 var location = this.Bind<Location>();
-
-                DBRepositoryProvider repoProvider = new DBRepositoryProvider(Utilities.GetConnectionStringFromConfiguration());
-                DBRepository.DBRepository dbRepo = repoProvider.GetRepository();
-                dbRepo.InsertLocation(location);
+                new ModelFactory().AddLocation(location);
 
                 return Response.AsRedirect("/");
             };

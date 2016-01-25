@@ -14,17 +14,15 @@ namespace NancyTest.Modules
             Get["/"] = parameters =>
             {
                 var model = new Location();
+
                 return View["index.html", model];
             };
 
             Get["/searchLocation"] = parameters =>
             {
-
-                string criteria = Request.Query["temp"].Value;
-
-                DBRepositoryProvider repoProvider = new DBRepositoryProvider(Utilities.GetConnectionStringFromConfiguration());
-                DBRepository.DBRepository dbRepo = repoProvider.GetRepository();
-                List<Location> result = dbRepo.GetLocationsForAutocomplete(criteria);
+                //TODO: validation
+                string criteria = Request.Query["term"].Value;
+                List<Location> result = new ModelFactory().SearchLocation(criteria);
 
                 return Response.AsJson(result);
             };
