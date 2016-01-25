@@ -6,9 +6,9 @@ using System.Collections.Generic;
 
 namespace NancyTest.Modules
 {
-    public class AddModule : Nancy.NancyModule
+    public class IndexModule : Nancy.NancyModule
     {
-        public AddModule() : base ("/")
+        public IndexModule()
         {
             Get["/"] = parameters =>
             {

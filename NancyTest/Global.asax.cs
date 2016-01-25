@@ -14,7 +14,7 @@ namespace NancyTest
 
         protected void Application_Start(object sender, EventArgs e)
         {
-            RegisterRoutes(RouteTable.Routes);
+            //RegisterRoutes(RouteTable.Routes);
         }
 
         void RegisterRoutes(RouteCollection routes)
