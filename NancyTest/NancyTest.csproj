@@ -74,7 +74,6 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Global.asax" />
     <Content Include="Views\index.html" />
     <Content Include="Views\MainPage.html" />
     <Content Include="Views\search\index.html" />
@@ -84,9 +83,6 @@
     <Compile Include="Bootstrapper.cs" />
     <Compile Include="DBRepository\DBRepository.cs" />
     <Compile Include="DBRepository\DBRepositoryProvider.cs" />
-    <Compile Include="Global.asax.cs">
-      <DependentUpon>Global.asax</DependentUpon>
-    </Compile>
     <Compile Include="ModelFactory.cs" />
     <Compile Include="Models\Location.cs" />
     <Compile Include="Modules\AddModule.cs" />
